@@ -1,0 +1,32 @@
+<!-- Container principal da busca -->
+<div class="search">
+  <!-- Formulário Angular com ngForm e evento de submissão -->
+  <form #form="ngForm" (submit)="onSubmit()">
+    <!-- Campo de entrada de texto para busca de localização -->
+    <input
+      type="text"
+      placeholder="Buscar localização"
+      name="city"
+      [(ngModel)]="initialCityName"
+    />
+
+
+    <!-- Ícone de busca com evento de clique para submeter o formulário -->
+    <span (click)="onSubmit()">
+      <fa-icon
+         animation="fade"
+         style="--fa-animation-duration: 5s; cursor: pointer;"
+         size="lg"
+         class="search-icon"
+         [icon]="searchIcon"       
+      ></fa-icon>
+    </span>
+  </form>
+</div>
+
+<!-- Componente de cartão de clima, exibido apenas se weatherDatas estiver definido -->
+<app-weather-card *ngIf="weatherDatas" [weatherDatasInput]="weatherDatas"></app-weather-card>
+<!--
+  *ngIf="weatherDatas": Diretiva estrutural Angular que exibe o componente apenas se weatherDatas estiver definido.
+  [weatherDatasInput]="weatherDatas": Ligação de dados unidirecional que passa weatherDatas como entrada para o componente app-weather-card.
+-->
